@@ -1,0 +1,571 @@
+{
+  "run_at": "2026-10-10T18:49:24.380602+00:00",
+  "summary": {
+    "ok": 4,
+    "warn": 0,
+    "fail": 0,
+    "total": 4
+  },
+  "results": [
+    {
+      "name": "SYNTHLUCIDA - Welcome",
+      "url": "https://synthlucida.com",
+      "module": "generic",
+      "checked_at": "2026-10-10T18:46:41.379066+00:00",
+      "status_code": 200,
+      "load_time_ms": 1904,
+      "console_errors": [],
+      "failed_resources": [],
+      "broken_links": [],
+      "links_checked": 7,
+      "pwa": {
+        "manifest_url": "https://synthlucida.com/manifest.json",
+        "manifest_ok": true,
+        "service_worker_supported": true,
+        "service_worker_registrations": [
+          "activated"
+        ]
+      },
+      "interactive": [
+        {
+          "text": "Explore SYNTHLUCIDA\n→",
+          "clicked": true
+        },
+        {
+          "text": "About▾",
+          "clicked": true
+        },
+        {
+          "text": "Contact▾",
+          "clicked": true
+        },
+        {
+          "text": "About Relax Player▾",
+          "clicked": true
+        },
+        {
+          "text": "🇨🇿 CZ",
+          "clicked": true
+        },
+        {
+          "text": "✉",
+          "clicked": true
+        },
+        {
+          "text": "ODESLAT ZPRÁVU",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        }
+      ],
+      "custom": null,
+      "seo": {
+        "meta_robots": "index, follow, max-image-preview:large",
+        "x_robots_tag": null,
+        "canonical_url": "https://synthlucida.com/",
+        "canonical_mismatch": false,
+        "robots_txt_exists": true,
+        "sitemap_exists": true,
+        "url_listed_in_sitemap": true,
+        "blocked_reasons": [],
+        "indexable": true
+      },
+      "overall": "ok",
+      "notes": []
+    },
+    {
+      "name": "SYNTHLUCIDA - Welcome (CZ)",
+      "url": "https://synthlucida.com/index-cz.html",
+      "module": "generic",
+      "checked_at": "2026-10-10T18:46:49.539790+00:00",
+      "status_code": 200,
+      "load_time_ms": 1119,
+      "console_errors": [],
+      "failed_resources": [],
+      "broken_links": [],
+      "links_checked": 7,
+      "pwa": {
+        "manifest_url": "https://synthlucida.com/manifest.json",
+        "manifest_ok": true,
+        "service_worker_supported": true,
+        "service_worker_registrations": [
+          "activated"
+        ]
+      },
+      "interactive": [
+        {
+          "text": "Prozkoumat SYNTHLUCIDA\n→",
+          "clicked": true
+        },
+        {
+          "text": "O mně▾",
+          "clicked": true
+        },
+        {
+          "text": "Kontakt▾",
+          "clicked": true
+        },
+        {
+          "text": "O Relax Playeru▾",
+          "clicked": true
+        },
+        {
+          "text": "🇬🇧 EN",
+          "clicked": true
+        },
+        {
+          "text": "✉",
+          "clicked": true
+        },
+        {
+          "text": "SEND MESSAGE",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        }
+      ],
+      "custom": null,
+      "seo": {
+        "meta_robots": "index, follow, max-image-preview:large",
+        "x_robots_tag": null,
+        "canonical_url": "https://synthlucida.com/index-cz.html",
+        "canonical_mismatch": false,
+        "robots_txt_exists": true,
+        "sitemap_exists": true,
+        "url_listed_in_sitemap": true,
+        "blocked_reasons": [],
+        "indexable": true
+      },
+      "overall": "ok",
+      "notes": []
+    },
+    {
+      "name": "RelaxPlayer - landing",
+      "url": "https://relaxplayer.eu",
+      "module": "generic",
+      "checked_at": "2026-10-10T18:46:56.287018+00:00",
+      "status_code": 200,
+      "load_time_ms": 1155,
+      "console_errors": [],
+      "failed_resources": [],
+      "broken_links": [],
+      "links_checked": 17,
+      "pwa": {
+        "manifest_url": "https://relaxplayer.eu/manifest.json",
+        "manifest_ok": true,
+        "service_worker_supported": true,
+        "service_worker_registrations": [
+          "activated"
+        ]
+      },
+      "interactive": [
+        {
+          "text": "Open menu",
+          "clicked": true
+        },
+        {
+          "text": "element#3",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#4",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#5",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#6",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#7",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        }
+      ],
+      "custom": null,
+      "seo": {
+        "meta_robots": "index, follow, max-image-preview:large",
+        "x_robots_tag": null,
+        "canonical_url": "https://relaxplayer.eu/",
+        "canonical_mismatch": false,
+        "robots_txt_exists": true,
+        "sitemap_exists": true,
+        "url_listed_in_sitemap": true,
+        "blocked_reasons": [],
+        "indexable": true
+      },
+      "overall": "ok",
+      "notes": []
+    },
+    {
+      "name": "RelaxPlayer - skutečný přehrávač",
+      "url": "https://synthlucida.com/player.html",
+      "module": "relaxplayer",
+      "checked_at": "2026-10-10T18:47:09.427204+00:00",
+      "status_code": 200,
+      "load_time_ms": 1821,
+      "console_errors": [],
+      "failed_resources": [],
+      "broken_links": [],
+      "links_checked": 5,
+      "pwa": {
+        "manifest_url": "https://synthlucida.com/manifest.json",
+        "manifest_ok": true,
+        "service_worker_supported": true,
+        "service_worker_registrations": [
+          "activated"
+        ]
+      },
+      "interactive": [
+        {
+          "text": "User guide",
+          "clicked": true
+        },
+        {
+          "text": "S",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "F",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#3",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#4",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#5",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "MUSIC: ASMR",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "EXPLORE",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "OFF",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "3s",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "6s",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "8s",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "10s",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "15s",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "WEATHER: OFF",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "PHOTO",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "SUNSET: OFF",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "MY PLAYLIST",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "⬇ DOWNLOAD OFFLINE",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "♡",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#57",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "▶",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#59",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#60",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#61",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#62",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#63",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#65",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "⤢",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "⛶",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#96",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#97",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "15m",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "30m",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "60m",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "✖",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "SAVE",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "✖",
+          "clicked": true
+        }
+      ],
+      "custom": {
+        "tested": true,
+        "clicked_selector": "button:has-text('▶')",
+        "audio_context_states": [],
+        "audio_context_running": false,
+        "timer_before": [
+          "00:00",
+          "00:00"
+        ],
+        "timer_after": [
+          "00:03",
+          "01:42"
+        ],
+        "timer_advanced": true,
+        "success_heuristic": true,
+        "note": null
+      },
+      "seo": {
+        "meta_robots": "index, follow, max-image-preview:large",
+        "x_robots_tag": null,
+        "canonical_url": "https://synthlucida.com/player.html",
+        "canonical_mismatch": false,
+        "robots_txt_exists": true,
+        "sitemap_exists": true,
+        "url_listed_in_sitemap": true,
+        "blocked_reasons": [],
+        "indexable": true
+      },
+      "overall": "ok",
+      "notes": []
+    }
+  ]
+}
