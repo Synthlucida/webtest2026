@@ -4,6 +4,17 @@
     { "url": "https://synthlucida.com", "name": "SYNTHLUCIDA - Welcome", "module": "generic" },
     { "url": "https://synthlucida.com/index-cz.html", "name": "SYNTHLUCIDA - Welcome (CZ)", "module": "generic" },
     { "url": "https://relaxplayer.eu", "name": "RelaxPlayer - landing", "module": "generic" },
+    { "url": "https://synthlucida.com/weather.html", "name": "Weather", "module": "generic" },
+    { "url": "https://synthlucida.com/weather-en.html", "name": "Weather - EN", "module": "generic" },
+    { "url": "https://synthlucida.com/night-rain-en.html", "name": "NIGHT RAIN", "module": "generic" },
+    { "url": "https://synthlucida.com/player-tarot.html", "name": "TAROT", "module": "generic" },
+    { "url": "https://synthlucida.com/hub.html", "name": "HUB", "module": "generic" },
+    { "url": "https://synthlucida.com/bio.html", "name": "BIO", "module": "generic" },
+    { "url": "https://synthlucida.com/services.html", "name": "SERVICES", "module": "generic" },
+    { "url": "https://synthlucida.com/progrese/progrese-en.html", "name": "Progrese", "module": "generic" },
+    { "url": "https://synthlucida.com/progrese/progrese-landing.html", "name": "Progrese - Landing", "module": "generic" },
+    { "url": "https://synthlucida.com/dzmaster/dzmaster-landing-en.html", "name": "DZMASTER - Landing", "module": "generic" },
+    { "url": "https://synthlucida.com/dzmaster/dzmaster.html", "name": "DZMASTER", "module": "generic" },
     { "url": "https://synthlucida.com/player.html", "name": "RelaxPlayer - skutečný přehrávač", "module": "relaxplayer" }
   ],
   "skip_link_keywords": [
