@@ -403,7 +403,7 @@ def render_report(payload, history_path: Path):
       <ol class="howto">
         <li>Vyplň dole URL, název a typ kontroly a klikni na <strong>Vygenerovat celý sites.json</strong>.</li>
         <li>Klikni na <strong>📋 Zkopírovat</strong>.</li>
-        <li>Jdi na GitHub do repozitáře <code>webzen2026/webtest2026</code>, otevři soubor
+        <li>Jdi na GitHub do repozitáře <code>webtest2026</code> (ten, ze kterého běží synthlucida.com/webtest2026), otevři soubor
           <code>sites.json</code> a klikni na tužku (Edit).</li>
         <li>V editoru označ úplně všechno (Ctrl+A / Cmd+A) a vlož místo toho zkopírovaný text
           (Ctrl+V / Cmd+V) - přepíšeš tak celý soubor najednou.</li>
@@ -538,7 +538,9 @@ def render_report(payload, history_path: Path):
   // Adresa syrového (raw) sites.json - veřejné čtení z GitHubu, bez tokenu,
   // žádné zapisování. Slouží jen k tomu, aby formulář znal aktuální seznam
   // webů a mohl vygenerovat CELÝ nový soubor místo jednoho řádku k vkládání.
-  var SITES_JSON_RAW_URL = 'https://raw.githubusercontent.com/webzen2026/webtest2026/main/sites.json';
+  // Report i sites.json leží na stejné adrese (https://synthlucida.com/webtest2026/),
+  // takže stačí relativní cesta - žádný účet ani název repa se tu nemusí psát.
+  var SITES_JSON_RAW_URL = 'sites.json';
   var currentSitesConfig = null;
   var loadStatusEl = document.getElementById('sitesLoadStatus');
 

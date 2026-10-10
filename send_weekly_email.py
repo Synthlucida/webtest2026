@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Pošle týdenní emailový souhrn kontroly webů (webzen2026/webtest2026).
+Pošle týdenní emailový souhrn kontroly webů (synthlucida.com/webtest2026).
 
 Nečte historii celého týdne běh po běhu - posílá aktuální stav ke dni
 odeslání (výsledek posledního proběhlého běhu kontroly), rozdělený na
@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 RESULTS_PATH = ROOT / "results" / "latest.json"
-REPORT_URL = "https://webzen2026.github.io/webtest2026/"
+REPORT_URL = "https://synthlucida.com/webtest2026/"
 
 
 def load_results():
