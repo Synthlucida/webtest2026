@@ -1,0 +1,30 @@
+name: Týdenní emailový souhrn
+
+on:
+  schedule:
+    # 07:50 UTC v pondělí = cca 09:50 v Praze (léto) / 08:50 (zima).
+    # Schválně mimo celou hodinu (viz komentář v site-check.yml).
+    - cron: "50 7 * * 1"
+  # umožní ruční spuštění tlačítkem "Run workflow" na GitHubu (pro test)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  send-weekly-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Nastavit Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Odeslat týdenní souhrn emailem
+        run: python -u send_weekly_email.py
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
