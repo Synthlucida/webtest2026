@@ -1,0 +1,67 @@
+name: Denní kontrola webů
+
+on:
+  schedule:
+    # Běží 2x denně - kdyby GitHub jeden z běhů zpozdil/vynechal, má report
+    # šanci se aktualizovat i tím druhým. Časy schválně NEJSOU na celou
+    # hodinu (minuta 0) - GitHub sám ve své dokumentaci píše, že přesné
+    # celé hodiny jsou nejvytíženější čas jejich scheduleru a mají
+    # nejvyšší šanci na zpoždění/vynechání běhu.
+    #
+    # 06:17 UTC = cca 08:17 v Praze (léto) / 07:17 (zima)
+    - cron: "17 6 * * *"
+    # 19:35 UTC = cca 21:35 v Praze (léto) / 20:35 (zima)
+    - cron: "35 19 * * *"
+  # umožní ruční spuštění tlačítkem "Run workflow" na GitHubu
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Nastavit Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Nainstalovat závislosti
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Spustit kontrolu webů
+        id: run_checks
+        run: python -u check_sites.py
+        env:
+          PYTHONUNBUFFERED: "1"
+        continue-on-error: true
+
+      - name: Uložit report do repozitáře (index.html + historie)
+        if: always()
+        run: |
+          git config user.name "webtest-bot"
+          git config user.email "webtest-bot@users.noreply.github.com"
+          git add index.html results/latest.json history.jsonl
+          git diff --cached --quiet || git commit -m "Denní kontrola webů: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          # Kdyby mezitím na GitHubu přibyl jiný commit (např. ruční úprava
+          # souboru přes web), stáhneme ho a spojíme - u konfliktu vyhrává
+          # náš právě vygenerovaný report, je vždy nejaktuálnější.
+          git fetch origin main
+          git merge -X ours --no-edit origin/main
+          git push
+
+      - name: Označit běh jako neúspěšný, pokud něco nefunguje
+        if: steps.run_checks.outcome == 'failure'
+        run: |
+          echo "Alespoň jeden web má stav 'Nefunguje' - viz index.html report."
+          exit 1
