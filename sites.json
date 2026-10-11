@@ -15,15 +15,9 @@
     { "url": "https://synthlucida.com/progrese/progrese-landing.html", "name": "Progrese - Landing", "module": "generic" },
     { "url": "https://synthlucida.com/dzmaster/dzmaster-landing-en.html", "name": "DZMASTER - Landing", "module": "generic" },
     { "url": "https://synthlucida.com/dzmaster/dzmaster.html", "name": "DZMASTER", "module": "generic" },
-    { "url": "https://synthlucida.com/player.html", "name": "RelaxPlayer - skutečný přehrávač", "module": "relaxplayer" }
+    { "url": "https://synthlucida.com/player.html", "name": "RelaxPlayer - skutečný přehrávač", "module": "relaxplayer" },
+    { "url": "https://synthlucida.com/relax.html", "name": "Ambient Flow", "module": "relaxplayer" }
   ],
-  "skip_link_keywords": [
-    "donate", "darovat", "podpor", "buy", "koupit", "nákup", "nakoupit",
-    "pay", "zaplatit", "platba", "checkout", "objedn", "store", "obchod",
-    "coffee", "ko-fi", "kofi", "patreon", "paypal", "stripe", "gumroad"
-  ],
-  "external_domains_skip_broken_link_check": [
-    "apps.microsoft.com", "play.google.com", "github.com",
-    "pond5.com", "audiojungle.net", "elements.envato.com"
-  ]
+  "skip_link_keywords": ["donate","darovat","podpor","buy","koupit","nákup","nakoupit","pay","zaplatit","platba","checkout","objedn","store","obchod","coffee","ko-fi","kofi","patreon","paypal","stripe","gumroad"],
+  "external_domains_skip_broken_link_check": ["apps.microsoft.com","play.google.com","github.com","pond5.com","audiojungle.net","elements.envato.com"]
 }
