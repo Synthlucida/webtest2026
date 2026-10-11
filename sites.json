@@ -17,6 +17,7 @@
     { "url": "https://synthlucida.com/dzmaster/dzmaster.html", "name": "DZMASTER", "module": "generic" },
     { "url": "https://synthlucida.com/player.html", "name": "RelaxPlayer - skutečný přehrávač", "module": "relaxplayer" },
     { "url": "https://synthlucida.com/game.html", "name": "RelaxPlayer - BLOCKS", "module": "generic" },
+    { "url": "https://synthlucida.com/draw.html", "name": "RelaxPlayer - DRAW", "module": "generic" },
     { "url": "https://synthlucida.com/relax.html", "name": "Ambient Flow", "module": "generic" }
   ],
   "skip_link_keywords": ["donate","darovat","podpor","buy","koupit","nákup","nakoupit","pay","zaplatit","platba","checkout","objedn","store","obchod","coffee","ko-fi","kofi","patreon","paypal","stripe","gumroad"],
