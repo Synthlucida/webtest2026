@@ -40,6 +40,7 @@ AUDIO_HOOK_INIT_SCRIPT = """
 """
 
 PLAY_BUTTON_CANDIDATES = [
+    "#mainPlayBtn",  # pevné id hlavního tlačítka v player.html (až ho tam přidáš)
     "button:has-text('▶')",
     "text=▶",
     "[aria-label*='play' i]",
@@ -80,47 +81,72 @@ async def _grab_time_tokens(page):
 
 
 async def check_relaxplayer(page, context):
-    """Reálně klikne na Play a ověří, že se spustilo přehrávání.
+    """Zkouší postupně všechny viditelné kandidáty na Play a skončí u prvního,
+    po jehož kliknutí opravdu začne hrát zvuk.
 
     Dva nezávislé důkazy (stačí jeden): 1) AudioContext přejde do stavu
     'running', 2) časovač na stránce (formát MM:SS) se po pár sekundách
     změní oproti stavu před kliknutím.
-    """
-    time_tokens_before = await _grab_time_tokens(page)
 
-    clicked = await _click_first_match(page, PLAY_BUTTON_CANDIDATES)
-    if not clicked:
+    Dřív se klikalo jen na první nalezený prvek - když se změnilo HTML playeru
+    a první shoda byla jiné tlačítko (než hlavní Play), test hlásil "Pozor",
+    i když player fungoval. Teď se zkusí víc kandidátů.
+    """
+    tried = []
+
+    for sel in PLAY_BUTTON_CANDIDATES:
+        try:
+            matches = page.locator(sel)
+            n = min(await matches.count(), 5)
+        except Exception:
+            continue
+
+        for i in range(n):
+            loc = matches.nth(i)
+            try:
+                if not await loc.is_visible():
+                    continue
+                time_before = await _grab_time_tokens(page)
+                await loc.click(timeout=3000)
+            except Exception:
+                continue
+
+            await page.wait_for_timeout(3500)
+
+            audio_states = await page.evaluate(
+                "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
+            )
+            audio_playing = any(s == "running" for s in audio_states)
+            time_after = await _grab_time_tokens(page)
+            timer_advanced = bool(time_before) and time_after != time_before
+
+            tried.append(f"{sel} #{i}")
+            if audio_playing or timer_advanced:
+                return {
+                    "tested": True,
+                    "clicked_selector": f"{sel} (#{i})",
+                    "audio_context_states": audio_states,
+                    "audio_context_running": audio_playing,
+                    "timer_before": time_before[:3],
+                    "timer_after": time_after[:3],
+                    "timer_advanced": timer_advanced,
+                    "success_heuristic": True,
+                    "note": None,
+                }
+
+    if not tried:
         return {
             "tested": False,
             "reason": "Play tlačítko nenalezeno žádným z kandidátních selektorů - "
                       "uprav PLAY_BUTTON_CANDIDATES v custom_checks.py podle skutečného HTML.",
         }
-
-    await page.wait_for_timeout(3500)
-
-    audio_states = await page.evaluate(
-        "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
-    )
-    audio_playing = any(s == "running" for s in audio_states)
-
-    time_tokens_after = await _grab_time_tokens(page)
-    timer_advanced = bool(time_tokens_before) and time_tokens_after != time_tokens_before
-
-    playing = audio_playing or timer_advanced
     return {
         "tested": True,
-        "clicked_selector": clicked,
-        "audio_context_states": audio_states,
-        "audio_context_running": audio_playing,
-        "timer_before": time_tokens_before[:3],
-        "timer_after": time_tokens_after[:3],
-        "timer_advanced": timer_advanced,
-        "success_heuristic": playing,
-        "note": None if playing else (
-            "Tlačítko se podařilo kliknout, ale nenašel jsem důkaz přehrávání (ani AudioContext "
-            "running, ani pohyb časovače). Možné důvody: přehrávání vyžaduje druhé kliknutí kvůli "
-            "autoplay policy prohlížeče, nebo stránka nemá žádný viditelný časovač ve formátu MM:SS."
-        ),
+        "tried_selectors": tried,
+        "success_heuristic": False,
+        "note": "Zkusil jsem kliknout na tyto prvky, ale žádný nespustil přehrávání (ani AudioContext "
+                "running, ani pohyb časovače): " + ", ".join(tried) + ". Možné důvody: hlavní Play "
+                "tlačítko nemá žádný z kandidátních selektorů, nebo není vybraná skladba.",
     }
 
 
