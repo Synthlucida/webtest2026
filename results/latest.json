@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-18T21:53:49.057948+00:00",
+  "run_at": "2026-10-19T08:11:57.091834+00:00",
   "summary": {
     "ok": 17,
     "warn": 1,
@@ -11,9 +11,9 @@
       "name": "SYNTHLUCIDA - Welcome",
       "url": "https://synthlucida.com",
       "module": "generic",
-      "checked_at": "2026-10-18T21:48:47.911410+00:00",
+      "checked_at": "2026-10-19T08:06:51.627027+00:00",
       "status_code": 200,
-      "load_time_ms": 1818,
+      "load_time_ms": 1963,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -76,9 +76,9 @@
       "name": "SYNTHLUCIDA - Welcome (CZ)",
       "url": "https://synthlucida.com/index-cz.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:48:56.125114+00:00",
+      "checked_at": "2026-10-19T08:07:00.408640+00:00",
       "status_code": 200,
-      "load_time_ms": 1143,
+      "load_time_ms": 1178,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -141,9 +141,9 @@
       "name": "RelaxPlayer - landing",
       "url": "https://relaxplayer.eu",
       "module": "generic",
-      "checked_at": "2026-10-18T21:49:03.327255+00:00",
+      "checked_at": "2026-10-19T08:07:07.616579+00:00",
       "status_code": 200,
-      "load_time_ms": 1387,
+      "load_time_ms": 1273,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -160,11 +160,6 @@
         {
           "text": "Open menu",
           "clicked": true
-        },
-        {
-          "text": "CS",
-          "clicked": false,
-          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
           "text": "element#3",
@@ -256,9 +251,9 @@
       "name": "Weather",
       "url": "https://synthlucida.com/weather.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:49:37.891202+00:00",
+      "checked_at": "2026-10-19T08:07:39.368138+00:00",
       "status_code": 200,
-      "load_time_ms": 2703,
+      "load_time_ms": 6765,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -287,19 +282,19 @@
           "clicked": true
         },
         {
-          "text": "Dnes\nPeřina mraků\n14°\n9°",
+          "text": "Dnes\nPeřina mraků\n12°\n7°",
           "clicked": true
         },
         {
-          "text": "Po\nPeřina mraků\n12°\n7°",
+          "text": "Út\nPeřina mraků\n16°\n7°",
           "clicked": true
         },
         {
-          "text": "Út\nPeřina mraků\n14°\n7°",
+          "text": "St\nSlabý ceďák\n13°\n8°",
           "clicked": true
         },
         {
-          "text": "St\nSlabý ceďák\n10°\n5°",
+          "text": "Čt\nSlabý ceďák\n14°\n8°",
           "clicked": true
         }
       ],
@@ -322,9 +317,9 @@
       "name": "Weather - EN",
       "url": "https://synthlucida.com/weather-en.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:49:45.041706+00:00",
+      "checked_at": "2026-10-19T08:07:51.138810+00:00",
       "status_code": 200,
-      "load_time_ms": 1939,
+      "load_time_ms": 2099,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -353,19 +348,19 @@
           "clicked": true
         },
         {
-          "text": "Today\nThick drizzle\n14°\n8°",
+          "text": "Today\nLight drizzle\n13°\n10°",
           "clicked": true
         },
         {
-          "text": "Mon\nLight drizzle\n14°\n10°",
+          "text": "Tue\nDrizzle\n14°\n10°",
           "clicked": true
         },
         {
-          "text": "Tue\nLight rain\n13°\n11°",
+          "text": "Wed\nDrizzle\n13°\n8°",
           "clicked": true
         },
         {
-          "text": "Wed\nLight rain\n13°\n8°",
+          "text": "Thu\nLight rain\n13°\n7°",
           "clicked": true
         }
       ],
@@ -388,9 +383,9 @@
       "name": "NIGHT RAIN",
       "url": "https://synthlucida.com/night-rain-en.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:49:51.175179+00:00",
+      "checked_at": "2026-10-19T08:07:57.541244+00:00",
       "status_code": 200,
-      "load_time_ms": 938,
+      "load_time_ms": 786,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -430,37 +425,37 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "6💧\n6\n💧",
+          "text": "4⭐\n🌩️\n4\n⭐",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "10🔥\n🌕\n10\n🔥",
+          "text": "3⭐\n3\n⭐",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "2🔥\n2\n🔥",
+          "text": "5⭐\n🎡\n5\n⭐",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "1⭐\n🌑\n1\n⭐",
-          "clicked": false,
-          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
-        },
-        {
-          "text": "8⭐\n8\n⭐",
-          "clicked": false,
-          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
-        },
-        {
-          "text": "7💧\n🌧️\n7\n💧",
+          "text": "6🔥\n6\n🔥",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
           "text": "1🔥\n🌑\n1\n🔥",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "4💧\n🌩️\n4\n💧",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "6⭐\n6\n⭐",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -498,9 +493,9 @@
       "name": "TAROT",
       "url": "https://synthlucida.com/player-tarot.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:19.085440+00:00",
+      "checked_at": "2026-10-19T08:08:25.515822+00:00",
       "status_code": 200,
-      "load_time_ms": 1216,
+      "load_time_ms": 1299,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -557,7 +552,7 @@
           "clicked": true
         },
         {
-          "text": "▶",
+          "text": "▾",
           "clicked": true
         }
       ],
@@ -580,9 +575,9 @@
       "name": "HUB",
       "url": "https://synthlucida.com/hub.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:32.450427+00:00",
+      "checked_at": "2026-10-19T08:08:39.391976+00:00",
       "status_code": 200,
-      "load_time_ms": 1256,
+      "load_time_ms": 1101,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -646,9 +641,9 @@
       "name": "BIO",
       "url": "https://synthlucida.com/bio.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:39.001434+00:00",
+      "checked_at": "2026-10-19T08:08:46.211371+00:00",
       "status_code": 200,
-      "load_time_ms": 959,
+      "load_time_ms": 907,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -684,9 +679,9 @@
       "name": "SERVICES",
       "url": "https://synthlucida.com/services.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:41.788887+00:00",
+      "checked_at": "2026-10-19T08:08:48.981370+00:00",
       "status_code": 200,
-      "load_time_ms": 836,
+      "load_time_ms": 909,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -730,9 +725,9 @@
       "name": "Progrese",
       "url": "https://synthlucida.com/progrese/progrese-en.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:44.898274+00:00",
+      "checked_at": "2026-10-19T08:08:52.129631+00:00",
       "status_code": 200,
-      "load_time_ms": 1072,
+      "load_time_ms": 1339,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -796,9 +791,9 @@
       "name": "Progrese - Landing",
       "url": "https://synthlucida.com/progrese/progrese-landing.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:51.505982+00:00",
+      "checked_at": "2026-10-19T08:08:58.669729+00:00",
       "status_code": 200,
-      "load_time_ms": 1174,
+      "load_time_ms": 1101,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -829,9 +824,9 @@
       "name": "DZMASTER - Landing",
       "url": "https://synthlucida.com/dzmaster/dzmaster-landing-en.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:53.924940+00:00",
+      "checked_at": "2026-10-19T08:09:01.005722+00:00",
       "status_code": 200,
-      "load_time_ms": 1390,
+      "load_time_ms": 1250,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -862,9 +857,9 @@
       "name": "DZMASTER",
       "url": "https://synthlucida.com/dzmaster/dzmaster.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:50:56.711519+00:00",
+      "checked_at": "2026-10-19T08:09:03.713235+00:00",
       "status_code": 200,
-      "load_time_ms": 1088,
+      "load_time_ms": 1123,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -928,13 +923,13 @@
       "name": "RelaxPlayer - skutečný přehrávač",
       "url": "https://synthlucida.com/player.html",
       "module": "relaxplayer",
-      "checked_at": "2026-10-18T21:51:01.671728+00:00",
+      "checked_at": "2026-10-19T08:09:08.902113+00:00",
       "status_code": 200,
-      "load_time_ms": 1110,
+      "load_time_ms": 1396,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
-      "links_checked": 5,
+      "links_checked": 4,
       "pwa": {
         "manifest_url": "https://synthlucida.com/manifest.json",
         "manifest_ok": true,
@@ -1014,7 +1009,7 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#24",
+          "text": "element#25",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -1044,17 +1039,12 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#34",
-          "clicked": false,
-          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
-        },
-        {
           "text": "element#35",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "♡",
+          "text": "element#36",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -1194,7 +1184,7 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#64",
+          "text": "♡",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -1234,7 +1224,12 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#73",
+          "text": "element#72",
+          "clicked": false,
+          "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
+        },
+        {
+          "text": "element#74",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -1249,12 +1244,12 @@
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#105",
+          "text": "element#106",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
         {
-          "text": "element#106",
+          "text": "element#107",
           "clicked": false,
           "error": "Locator.click: Timeout 2000ms exceeded.\nCall log:\nwaiting for locator(\"button, [role=button], input[type=submit], input["
         },
@@ -1330,9 +1325,9 @@
       "name": "RelaxPlayer - BLOCKS",
       "url": "https://synthlucida.com/game.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:53:27.787434+00:00",
+      "checked_at": "2026-10-19T08:11:36.557780+00:00",
       "status_code": 200,
-      "load_time_ms": 1465,
+      "load_time_ms": 1339,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -1396,9 +1391,9 @@
       "name": "RelaxPlayer - DRAW",
       "url": "https://synthlucida.com/draw.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:53:33.207038+00:00",
+      "checked_at": "2026-10-19T08:11:41.938624+00:00",
       "status_code": 200,
-      "load_time_ms": 1569,
+      "load_time_ms": 1115,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
@@ -1467,9 +1462,9 @@
       "name": "Ambient Flow",
       "url": "https://synthlucida.com/relax.html",
       "module": "generic",
-      "checked_at": "2026-10-18T21:53:40.988502+00:00",
+      "checked_at": "2026-10-19T08:11:49.429602+00:00",
       "status_code": 200,
-      "load_time_ms": 1497,
+      "load_time_ms": 1091,
       "console_errors": [],
       "failed_resources": [],
       "broken_links": [],
