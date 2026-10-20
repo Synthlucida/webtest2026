@@ -36,7 +36,26 @@ AUDIO_HOOK_INIT_SCRIPT = """
     window.AudioContext = Wrapped;
     window.webkitAudioContext = Wrapped;
   }
+  // Zapamatuje si každý <audio>/<video> (i vytvořený přes new Audio()), na kterém
+  // se zavolalo play() - player nemusí používat Web Audio, ale obyčejný <audio>.
+  window.__testMedia = [];
+  const origPlay = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function(...args) {
+    if (window.__testMedia.indexOf(this) === -1) window.__testMedia.push(this);
+    return origPlay.apply(this, args);
+  };
 })();
+"""
+
+MEDIA_STATE_JS = """
+() => {
+  const all = new Set([...(window.__testMedia || []), ...document.querySelectorAll('audio,video')]);
+  return [...all].map(m => ({
+    paused: m.paused, currentTime: Math.round(m.currentTime * 10) / 10,
+    readyState: m.readyState, error: m.error ? m.error.code : null,
+    src: (m.currentSrc || m.src || '').slice(-60),
+  }));
+}
 """
 
 PLAY_BUTTON_CANDIDATES = [
@@ -93,6 +112,8 @@ async def check_relaxplayer(page, context):
     i když player fungoval. Teď se zkusí víc kandidátů.
     """
     tried = []
+    last_media = []
+    last_audio_states = []
 
     for sel in PLAY_BUTTON_CANDIDATES:
         try:
@@ -117,16 +138,22 @@ async def check_relaxplayer(page, context):
                 "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
             )
             audio_playing = any(s == "running" for s in audio_states)
+            media = await page.evaluate(MEDIA_STATE_JS)
+            media_playing = any((not m["paused"]) and m["currentTime"] > 0 for m in media)
             time_after = await _grab_time_tokens(page)
             timer_advanced = bool(time_before) and time_after != time_before
 
             tried.append(f"{sel} #{i}")
-            if audio_playing or timer_advanced:
+            last_media = media
+            last_audio_states = audio_states
+            if audio_playing or timer_advanced or media_playing:
                 return {
                     "tested": True,
                     "clicked_selector": f"{sel} (#{i})",
                     "audio_context_states": audio_states,
                     "audio_context_running": audio_playing,
+                    "media_elements": media,
+                    "media_playing": media_playing,
                     "timer_before": time_before[:3],
                     "timer_after": time_after[:3],
                     "timer_advanced": timer_advanced,
@@ -143,6 +170,8 @@ async def check_relaxplayer(page, context):
     return {
         "tested": True,
         "tried_selectors": tried,
+        "audio_context_states": last_audio_states,
+        "media_elements": last_media,
         "success_heuristic": False,
         "note": "Zkusil jsem kliknout na tyto prvky, ale žádný nespustil přehrávání (ani AudioContext "
                 "running, ani pohyb časovače): " + ", ".join(tried) + ". Možné důvody: hlavní Play "
