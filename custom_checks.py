@@ -59,13 +59,15 @@ MEDIA_STATE_JS = """
 """
 
 PLAY_BUTTON_CANDIDATES = [
-    "#mainPlayBtn",  # pevné id hlavního tlačítka v player.html (až ho tam přidáš)
+    "#btn-play",  # hlavní Play/Pause tlačítko v player.html (SVG ikona, aria-label="Play")
+    "button.btn-ctrl[aria-label='Play' i]",
     "button:has-text('▶')",
     "text=▶",
-    "[aria-label*='play' i]",
-    "[aria-label*='hrát' i]",
-    "[aria-label*='přehrát' i]",
-    "[title*='play' i]",
+    # POZOR: ne "*=play" - to trefí i "Show the PLAYing track", "Back to the PLAYing MY PLAYLIST"
+    "[aria-label='Play' i]",
+    "[aria-label='hrát' i]",
+    "[aria-label='přehrát' i]",
+    "[title='Play' i]",
     "button:has-text('Play')",
     "button:has-text('Přehrát')",
     "button:has-text('Start')",
@@ -99,29 +101,55 @@ async def _grab_time_tokens(page):
     return TIME_PATTERN.findall(text or "")
 
 
-async def check_relaxplayer(page, context):
-    """Zkouší postupně všechny viditelné kandidáty na Play a skončí u prvního,
-    po jehož kliknutí opravdu začne hrát zvuk.
+# Řádky se skladbami v seznamu - player bez vybrané skladby ("SELECT TRACK") nic
+# nepřehraje, takže když samotné Play nezabere, test klikne nejdřív na skladbu.
+TRACK_CANDIDATES = [
+    "[data-src]", "[data-track]", "[data-file]", "[data-index]",
+    "[class*='track' i]", "[class*='song' i]",
+    "[id*='playlist' i] li", "[id*='playlist' i] > div", "[id*='list' i] li",
+    "li[onclick]", "[class*='item' i]",
+]
 
-    Dva nezávislé důkazy (stačí jeden): 1) AudioContext přejde do stavu
-    'running', 2) časovač na stránce (formát MM:SS) se po pár sekundách
-    změní oproti stavu před kliknutím.
 
-    Dřív se klikalo jen na první nalezený prvek - když se změnilo HTML playeru
-    a první shoda byla jiné tlačítko (než hlavní Play), test hlásil "Pozor",
-    i když player fungoval. Teď se zkusí víc kandidátů.
-    """
-    tried = []
-    last_media = []
-    last_audio_states = []
+async def _is_safe_to_click(loc):
+    """Neklikat na odkazy vedoucí pryč ze stránky (donate, obchod apod.)."""
+    try:
+        return await loc.evaluate("e => !e.closest('a[href]') && !!(e.offsetWidth || e.offsetHeight)")
+    except Exception:
+        return False
 
+
+async def _evidence(page, time_before, label):
+    """Počká a zjistí, jestli se opravdu přehrává. Vrací dict s důkazem, nebo None."""
+    await page.wait_for_timeout(3500)
+    audio_states = await page.evaluate(
+        "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
+    )
+    audio_playing = any(s == "running" for s in audio_states)
+    media = await page.evaluate(MEDIA_STATE_JS)
+    media_playing = any((not m["paused"]) and m["currentTime"] > 0 for m in media)
+    time_after = await _grab_time_tokens(page)
+    timer_advanced = bool(time_before) and time_after != time_before
+    result = {
+        "clicked_selector": label,
+        "audio_context_states": audio_states,
+        "audio_context_running": audio_playing,
+        "media_elements": media,
+        "media_playing": media_playing,
+        "timer_before": time_before[:3],
+        "timer_after": time_after[:3],
+        "timer_advanced": timer_advanced,
+    }
+    return (result if (audio_playing or media_playing or timer_advanced) else None), result
+
+
+async def _try_play_buttons(page, tried):
     for sel in PLAY_BUTTON_CANDIDATES:
         try:
             matches = page.locator(sel)
             n = min(await matches.count(), 5)
         except Exception:
             continue
-
         for i in range(n):
             loc = matches.nth(i)
             try:
@@ -131,51 +159,90 @@ async def check_relaxplayer(page, context):
                 await loc.click(timeout=3000)
             except Exception:
                 continue
+            label = f"{sel} (#{i})"
+            tried.append(label)
+            ok, last = await _evidence(page, time_before, label)
+            if ok:
+                return ok, last
+    return None, None
 
-            await page.wait_for_timeout(3500)
 
-            audio_states = await page.evaluate(
-                "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
-            )
-            audio_playing = any(s == "running" for s in audio_states)
-            media = await page.evaluate(MEDIA_STATE_JS)
-            media_playing = any((not m["paused"]) and m["currentTime"] > 0 for m in media)
-            time_after = await _grab_time_tokens(page)
-            timer_advanced = bool(time_before) and time_after != time_before
-
-            tried.append(f"{sel} #{i}")
-            last_media = media
-            last_audio_states = audio_states
-            if audio_playing or timer_advanced or media_playing:
-                return {
-                    "tested": True,
-                    "clicked_selector": f"{sel} (#{i})",
-                    "audio_context_states": audio_states,
-                    "audio_context_running": audio_playing,
-                    "media_elements": media,
-                    "media_playing": media_playing,
-                    "timer_before": time_before[:3],
-                    "timer_after": time_after[:3],
-                    "timer_advanced": timer_advanced,
-                    "success_heuristic": True,
-                    "note": None,
+async def _dump_candidates(page, selectors, limit=3):
+    out = {}
+    for sel in selectors:
+        try:
+            matches = page.locator(sel)
+            cnt = await matches.count()
+            if cnt:
+                out[sel] = {
+                    "count": cnt,
+                    "first_html": [
+                        (await matches.nth(i).evaluate("e => e.outerHTML"))[:220]
+                        for i in range(min(cnt, limit))
+                    ],
                 }
+        except Exception:
+            continue
+    return out
+
+
+async def check_relaxplayer(page, context):
+    """Ověří, že player skutečně přehrává.
+
+    Důkazy (stačí jeden): AudioContext 'running', <audio> element co se přehrává
+    (currentTime roste) nebo pohyb časovače MM:SS.
+    Postup: 1) zkusí Play tlačítka, 2) když nic nehraje (typicky není vybraná
+    skladba - "SELECT TRACK"), klikne na skladbu v seznamu a případně pak znovu
+    na Play. Při neúspěchu přidá do reportu HTML kandidátů pro snadné doladění.
+    """
+    tried = []
+
+    ok, last = await _try_play_buttons(page, tried)
+    if ok:
+        return {"tested": True, **ok, "success_heuristic": True, "note": None}
+
+    for sel in TRACK_CANDIDATES:
+        try:
+            matches = page.locator(sel)
+            n = min(await matches.count(), 3)
+        except Exception:
+            continue
+        for i in range(n):
+            loc = matches.nth(i)
+            try:
+                if not await _is_safe_to_click(loc):
+                    continue
+                time_before = await _grab_time_tokens(page)
+                await loc.click(timeout=3000)
+            except Exception:
+                continue
+            label = f"skladba: {sel} (#{i})"
+            tried.append(label)
+            ok, last = await _evidence(page, time_before, label)
+            if ok:
+                return {"tested": True, **ok, "success_heuristic": True, "note": None}
+            # skladba možná jen vybrána - zkusit po ní ještě Play
+            ok, last2 = await _try_play_buttons(page, tried)
+            if ok:
+                ok["clicked_selector"] = f"{label} + {ok['clicked_selector']}"
+                return {"tested": True, **ok, "success_heuristic": True, "note": None}
+            if last2:
+                last = last2
 
     if not tried:
         return {
             "tested": False,
-            "reason": "Play tlačítko nenalezeno žádným z kandidátních selektorů - "
-                      "uprav PLAY_BUTTON_CANDIDATES v custom_checks.py podle skutečného HTML.",
+            "reason": "Play tlačítko ani skladbu nenalezeno žádným z kandidátních selektorů - "
+                      "uprav PLAY_BUTTON_CANDIDATES / TRACK_CANDIDATES v custom_checks.py.",
         }
     return {
         "tested": True,
         "tried_selectors": tried,
-        "audio_context_states": last_audio_states,
-        "media_elements": last_media,
+        "last_attempt": last,
+        "diagnostika_play": await _dump_candidates(page, PLAY_BUTTON_CANDIDATES[:8]),
+        "diagnostika_skladby": await _dump_candidates(page, TRACK_CANDIDATES),
         "success_heuristic": False,
-        "note": "Zkusil jsem kliknout na tyto prvky, ale žádný nespustil přehrávání (ani AudioContext "
-                "running, ani pohyb časovače): " + ", ".join(tried) + ". Možné důvody: hlavní Play "
-                "tlačítko nemá žádný z kandidátních selektorů, nebo není vybraná skladba.",
+        "note": "Žádný z pokusů (Play ani výběr skladby) nespustil přehrávání: " + ", ".join(tried),
     }
 
 
