@@ -48,9 +48,14 @@ AUDIO_HOOK_INIT_SCRIPT = """
 """
 
 PLAY_BUTTON_CANDIDATES = [
+    # Skutečné Play v player.html (ikona je SVG, ne znak ▶). Musí být PRVNÍ: dřív tu byl
+    # selektor [aria-label*='play' i], který jako první zasáhl tlačítko "My files and
+    # playlists" (v popisku je "playlists") - test pak klikl na špatnou věc a hudba se
+    # nikdy nespustila.
+    "#btn-play",
     "button:has-text('▶')",
     "text=▶",
-    "[aria-label*='play' i]",
+    "[aria-label='Play' i]",
     "[aria-label*='hrát' i]",
     "[aria-label*='přehrát' i]",
     "[title*='play' i]",
@@ -90,9 +95,10 @@ async def _grab_time_tokens(page):
 async def check_relaxplayer(page, context):
     """Reálně klikne na Play a ověří, že se spustilo přehrávání.
 
-    Dva nezávislé důkazy (stačí jeden): 1) AudioContext přejde do stavu
-    'running', 2) časovač na stránce (formát MM:SS) se po pár sekundách
-    změní oproti stavu před kliknutím.
+    Tři nezávislé důkazy (stačí jeden): 1) <audio>/<video> prvek hraje
+    (není paused a currentTime > 0), 2) AudioContext přejde do stavu
+    'running', 3) časovač na stránce (formát MM:SS) se změní oproti stavu
+    před kliknutím.
     """
     time_tokens_before = await _grab_time_tokens(page)
 
@@ -104,30 +110,54 @@ async def check_relaxplayer(page, context):
                       "uprav PLAY_BUTTON_CANDIDATES v custom_checks.py podle skutečného HTML.",
         }
 
-    await page.wait_for_timeout(3500)
+    # Čekáme až ~12 s, ale skončíme hned, jak se objeví první důkaz přehrávání -
+    # skladba se stahuje z GitHubu a na pomalejším běhu to může trvat déle než pár sekund.
+    audio_states, audio_playing = [], False
+    media_state, media_playing = [], False
+    time_tokens_after, timer_advanced = [], False
+    waited = 0
+    while waited < 12000:
+        await page.wait_for_timeout(500)
+        waited += 500
 
-    audio_states = await page.evaluate(
-        "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
-    )
-    audio_playing = any(s == "running" for s in audio_states)
+        audio_states = await page.evaluate(
+            "() => window.__testAudioContexts ? window.__testAudioContexts.map(c => c.state) : []"
+        )
+        audio_playing = any(s == "running" for s in audio_states)
 
-    time_tokens_after = await _grab_time_tokens(page)
-    timer_advanced = bool(time_tokens_before) and time_tokens_after != time_tokens_before
+        # nejpřímější důkaz: <audio>/<video> prvek na stránce skutečně hraje (player.html
+        # přehrává přes obyčejný <audio>, AudioContext se vytváří jen pro některé funkce)
+        media_state = await page.evaluate(
+            """() => Array.from(document.querySelectorAll('audio, video')).map(m => ({
+                paused: m.paused, currentTime: Math.round(m.currentTime * 10) / 10
+            }))"""
+        )
+        media_playing = any((not m["paused"]) and m["currentTime"] > 0 for m in media_state)
 
-    playing = audio_playing or timer_advanced
+        time_tokens_after = await _grab_time_tokens(page)
+        timer_advanced = bool(time_tokens_before) and time_tokens_after != time_tokens_before
+
+        if audio_playing or media_playing or timer_advanced:
+            break
+
+    playing = audio_playing or media_playing or timer_advanced
     return {
         "tested": True,
         "clicked_selector": clicked,
+        "waited_ms": waited,
         "audio_context_states": audio_states,
         "audio_context_running": audio_playing,
+        "media_elements": media_state[:3],
+        "media_playing": media_playing,
         "timer_before": time_tokens_before[:3],
         "timer_after": time_tokens_after[:3],
         "timer_advanced": timer_advanced,
         "success_heuristic": playing,
         "note": None if playing else (
-            "Tlačítko se podařilo kliknout, ale nenašel jsem důkaz přehrávání (ani AudioContext "
-            "running, ani pohyb časovače). Možné důvody: přehrávání vyžaduje druhé kliknutí kvůli "
-            "autoplay policy prohlížeče, nebo stránka nemá žádný viditelný časovač ve formátu MM:SS."
+            "Tlačítko Play se podařilo kliknout, ale za 12 s jsem nenašel důkaz přehrávání (ani "
+            "hrající <audio> prvek, ani AudioContext running, ani pohyb časovače). Možné důvody: "
+            "skladba se nestáhla (GitHub nedostupný/pomalý), nebo přehrávání vyžaduje druhé kliknutí "
+            "kvůli autoplay policy prohlížeče."
         ),
     }
 
