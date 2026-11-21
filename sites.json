@@ -17,6 +17,9 @@
     { "url": "https://synthlucida.com/dzmaster/dzmaster.html", "name": "DZMASTER", "module": "generic" },
     { "url": "https://synthlucida.com/player.html", "name": "RelaxPlayer - skutečný přehrávač", "module": "relaxplayer" },
     { "url": "https://synthlucida.com/game.html", "name": "RelaxPlayer - BLOCKS", "module": "generic" },
+    { "url": "https://synthlucida.com/xtally/dokumenty.html", "name": "XTALLY - DOKUMENTY", "module": "generic" },
+    { "url": "https://synthlucida.com/xtally/tabulky.html", "name": "XTALLY - TABULKY", "module": "generic" },
+    { "url": "https://synthlucida.com/xtally/scanner.html", "name": "XTALLY - SCANNER", "module": "generic" },
     { "url": "https://synthlucida.com/draw.html", "name": "RelaxPlayer - DRAW", "module": "generic" },
     { "url": "https://synthlucida.com/relax.html", "name": "Ambient Flow", "module": "generic" }
   ],
