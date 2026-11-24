@@ -22,7 +22,6 @@
     { "url": "https://synthlucida.com/xtally/scanner.html", "name": "XTALLY - SCANNER", "module": "generic" },
     { "url": "https://synthlucida.com/tripcost/tripcost-landing-en.html", "name": "TRIPCOST - LANDING", "module": "generic" },
     { "url": "https://synthlucida.com/tripcost/tripcost-en.html", "name": "TRIPCOST - APLIKACE", "module": "generic" },
-    { "url": "https://synthlucida.com/onair.html", "name": "ONAIR", "module": "generic" },
     { "url": "https://synthlucida.com/draw-landing.html", "name": "DRAW - Landing", "module": "generic" },
     { "url": "https://synthlucida.com/draw.html", "name": "RelaxPlayer - DRAW", "module": "generic" },
     { "url": "https://synthlucida.com/relax.html", "name": "Ambient Flow", "module": "generic" }
