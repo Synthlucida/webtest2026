@@ -3,7 +3,6 @@
   "sites": [
     { "url": "https://synthlucida.com", "name": "SYNTHLUCIDA - Welcome", "module": "generic" },
     { "url": "https://synthlucida.com/index-cz.html", "name": "SYNTHLUCIDA - Welcome (CZ)", "module": "generic" },
-    { "url": "https://relaxplayer.eu", "name": "RelaxPlayer - landing", "module": "generic" },
     { "url": "https://synthlucida.com/weather.html", "name": "Weather", "module": "generic" },
     { "url": "https://synthlucida.com/weather-en.html", "name": "Weather - EN", "module": "generic" },
     { "url": "https://synthlucida.com/night-rain-en.html", "name": "NIGHT RAIN", "module": "generic" },
