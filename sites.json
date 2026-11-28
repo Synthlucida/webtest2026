@@ -23,6 +23,7 @@
     { "url": "https://synthlucida.com/tripcost/tripcost-en.html", "name": "TRIPCOST - APLIKACE", "module": "generic" },
     { "url": "https://synthlucida.com/relaxplayer/index.html", "name": "RELAX PLAYER - LANDING EN", "module": "generic" },
     { "url": "https://synthlucida.com/relaxplayer/index-cz.html", "name": "RELAX PLAYER - LANDING CZ", "module": "generic" },
+    { "url": "https://synthlucida.com/pagezen/index.html", "name": "PAGEZEN", "module": "generic" },
     { "url": "https://synthlucida.com/draw-landing.html", "name": "DRAW - Landing", "module": "generic" },
     { "url": "https://synthlucida.com/draw.html", "name": "RelaxPlayer - DRAW", "module": "generic" },
     { "url": "https://synthlucida.com/relax.html", "name": "Ambient Flow", "module": "generic" }
